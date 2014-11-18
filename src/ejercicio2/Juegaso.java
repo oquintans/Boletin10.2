@@ -13,36 +13,39 @@ import javax.swing.JOptionPane;
  */
 public class Juegaso {
 
-    private int cont1 = 0;
+    public int pedirNum() {
 
-    public double pedirNum() {
-        double num;
+        int num;
+
         do {
-            num = Math.random() * 100;
+            double random = Math.random() * 100;
+            num = (int) random;
         } while (num < 1 || num > 50);
         return num;
     }
 
     public int intentosMax() {
-        int num;
+
+        int numI;
+
         do {
             String dato = JOptionPane.showInputDialog("Introducir número de intentos: ");
-            num = Integer.parseInt(dato);
-        } while (num <= 0);
-        return num;
+            numI = Integer.parseInt(dato);
+        } while (numI <= 0);
+        return numI;
     }
 
     public void jugar() {
 
-        double num;
-        double resp = this.pedirNum();
+        int num;
+        int cont = 0;
+        int resp = this.pedirNum();
         int intento = this.intentosMax();
 
         do {
             String dato = JOptionPane.showInputDialog("DALE AHÍ");
-            num = Double.parseDouble(dato);
-
-            cont1++;
+            num = Integer.parseInt(dato);
+            cont++;
 
             if (num - resp > 20 || resp - num > 20) {
                 JOptionPane.showMessageDialog(null, "Muy frio.");
@@ -56,15 +59,57 @@ public class Juegaso {
             if (num - resp <= 5 && num - resp > 0 || resp - num <= 5 && resp - num > 0) {
                 JOptionPane.showMessageDialog(null, "Muy caliente.");
             }
-            JOptionPane.showMessageDialog(null, "Intentos: " + (intento - cont1));
+            JOptionPane.showMessageDialog(null, "Intentos: " + (intento - cont));
 
-        } while (num != resp && cont1 != intento);
+        } while (num != resp && cont != intento);
 
         if (num == resp) {
             JOptionPane.showMessageDialog(null, "WIN");
         }
-        if (cont1 == intento) {
+        if (cont == intento) {
             JOptionPane.showMessageDialog(null, "LOSER");
         }
+    }
+
+    public void jugar2() {
+
+        int num ;
+        int cont;
+        int resp = this.pedirNum();
+        int intento = this.intentosMax();
+        
+        String dato = JOptionPane.showInputDialog("DALE AHÍ");
+            num = Integer.parseInt(dato);
+
+        for (cont = 1; cont < intento && num != resp; cont++) {
+            
+
+            if (num - resp > 20 || resp - num > 20) {
+                JOptionPane.showMessageDialog(null, "Muy frio.");
+                JOptionPane.showMessageDialog(null, "Intentos: " + (intento - cont));
+            }
+            if (num - resp <= 20 && num - resp > 15 || resp - num <= 20 && resp - num > 15) {
+                JOptionPane.showMessageDialog(null, "Frio.");
+                JOptionPane.showMessageDialog(null, "Intentos: " + (intento - cont));
+            }
+            if (num - resp <= 15 && num - resp > 5 || resp - num <= 15 && resp - num > 5) {
+                JOptionPane.showMessageDialog(null, "Caliente.");
+                JOptionPane.showMessageDialog(null, "Intentos: " + (intento - cont));
+            }
+            if (num - resp <= 5 && num - resp > 0 || resp - num <= 5 && resp - num > 0) {
+                JOptionPane.showMessageDialog(null, "Muy caliente.");
+                JOptionPane.showMessageDialog(null, "Intentos: " + (intento - cont));
+            }
+            String dato2 = JOptionPane.showInputDialog("DALE AHÍ");
+            num = Integer.parseInt(dato2);
+
+        }
+        if (num == resp) {
+            JOptionPane.showMessageDialog(null, "WIN");
+        }
+        if (cont == intento) {
+            JOptionPane.showMessageDialog(null, "LOSER");
+        }
+
     }
 }

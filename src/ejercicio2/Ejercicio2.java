@@ -16,7 +16,7 @@ public class Ejercicio2 {
      */
     public static void main(String[] args) {
         Juegaso par=new Juegaso();
-        par.jugar();
+        par.jugar2();
     }
     
 }
