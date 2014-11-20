@@ -84,21 +84,26 @@ public class Juegaso {
 
         for (cont = 1; cont < intento && num != resp; cont++) {
 
-            if (num - resp > 20 || resp - num > 20) {
+            int dif = Math.abs(num - resp);
+
+            if (dif > 20) {
                 JOptionPane.showMessageDialog(null, "Muy frio.");
 
-            }
-            if (num - resp <= 20 && num - resp > 15 || resp - num <= 20 && resp - num > 15) {
-                JOptionPane.showMessageDialog(null, "Frio.");
+            } else {
+                if (dif <= 20 && dif > 15) {
+                    JOptionPane.showMessageDialog(null, "Frio.");
 
-            }
-            if (num - resp <= 15 && num - resp > 5 || resp - num <= 15 && resp - num > 5) {
-                JOptionPane.showMessageDialog(null, "Caliente.");
+                } else {
+                    if (dif <= 15 && dif > 5) {
+                        JOptionPane.showMessageDialog(null, "Caliente.");
 
-            }
-            if (num - resp <= 5 && num - resp > 0 || resp - num <= 5 && resp - num > 0) {
-                JOptionPane.showMessageDialog(null, "Muy caliente.");
+                    } else {
+                        if (dif <= 5 && dif > 0) {
+                            JOptionPane.showMessageDialog(null, "Muy caliente.");
 
+                        }
+                    }
+                }
             }
             do {
                 String dato2 = JOptionPane.showInputDialog("DALE AHÍ\nIntentos: " + (intento - cont));
@@ -112,17 +117,15 @@ public class Juegaso {
         if (cont == intento) {
             JOptionPane.showMessageDialog(null, "LOSER");
         }
-        
+
         int end = JOptionPane.showConfirmDialog(null, "PLAY AGAIN?");
-        if(end == JOptionPane.YES_OPTION){
+        if (end == JOptionPane.YES_OPTION) {
             this.jugar2();
         }
-            
-        if(end == JOptionPane.NO_OPTION){
+
+        if (end == JOptionPane.NO_OPTION) {
             exit();
         }
- 
-
 
     }
 }

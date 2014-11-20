@@ -15,9 +15,9 @@ public class Ejercicio2 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Juegaso par=new Juegaso();
+        Juegaso par = new Juegaso();
         par.jugar2();
-      
+
     }
-    
+
 }
